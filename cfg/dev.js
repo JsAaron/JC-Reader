@@ -1,5 +1,6 @@
 'use strict';
-
+//https://www.jianshu.com/p/fe7e75974149
+//https://doc.webpack-china.org/configuration
 let path = require('path');
 let webpack = require('webpack');
 let baseConfig = require('./base');
