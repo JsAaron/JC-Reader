@@ -1,6 +1,5 @@
 'use strict';
-//https://www.jianshu.com/p/fe7e75974149
-//https://doc.webpack-china.org/configuration
+
 let path = require('path');
 let webpack = require('webpack');
 let baseConfig = require('./base');
@@ -8,6 +7,7 @@ let defaultSettings = require('./defaults');
 
 // Add needed plugins here
 let BowerWebpackPlugin = require('bower-webpack-plugin');
+// let HtmlWebpackPlugin = require('html-webpack-plugin')
 
 let config = Object.assign({}, baseConfig, {
   entry: [
@@ -23,6 +23,12 @@ let config = Object.assign({}, baseConfig, {
     new BowerWebpackPlugin({
       searchResolveModulesDirectories: false
     })
+    // new HtmlWebpackPlugin({
+    //   filename: '/template/index.html',
+    //   template: '/template/compile/index.html',
+    //   inject: 'head',
+    //   hash: true
+    // })
   ],
   module: defaultSettings.getDefaultModules()
 });
@@ -32,8 +38,7 @@ config.module.loaders.push({
   test: /\.(js|jsx)$/,
   loader: 'react-hot!babel-loader',
   include: [].concat(
-    config.additionalPaths,
-    [ path.join(__dirname, '/../src') ]
+    config.additionalPaths, [path.join(__dirname, '/../src')]
   )
 });
 
