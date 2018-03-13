@@ -1,45 +1,63 @@
 'use strict';
 
-let path = require('path');
-let webpack = require('webpack');
-let baseConfig = require('./base');
-let defaultSettings = require('./defaults');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const rootPath = process.cwd()
 
-// Add needed plugins here
-let BowerWebpackPlugin = require('bower-webpack-plugin');
-// let HtmlWebpackPlugin = require('html-webpack-plugin')
+const port = 8080
+const publicPath = path.join(rootPath, '/public')
 
-let config = Object.assign({}, baseConfig, {
+module.exports = {
   entry: [
-    'webpack-dev-server/client?http://127.0.0.1:' + defaultSettings.port,
+    'webpack-dev-server/client?http://127.0.0.1:' + port,
     'webpack/hot/only-dev-server',
-    './src/index'
+    './src/main'
   ],
-  cache: true,
+  output: {
+    path: path.join(publicPath, '/assets'),
+    filename: 'app.js'
+  },
   devtool: 'eval-source-map',
+  devServer: {
+    contentBase: publicPath,
+    historyApiFallback: true,
+    hot: true,
+    port: port
+  },
+  module: {
+    rules: [{
+        test: /(\.jsx|\.js)$/,
+        use: {
+          loader: "babel-loader"
+        },
+        exclude: /node_modules/
+      },
+      {
+        test: /\.css$/,
+        use: [{
+          loader: "style-loader"
+        }, {
+          loader: "css-loader",
+          options: {
+            modules: true, // 指定启用css modules
+            localIdentName: '[name]__[local]--[hash:base64:5]' // 指定css的类名格式
+          }
+        }, {
+          loader: "postcss-loader"
+        }]
+      }
+    ]
+  },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new BowerWebpackPlugin({
-      searchResolveModulesDirectories: false
-    })
-    // new HtmlWebpackPlugin({
-    //   filename: '/template/index.html',
-    //   template: '/template/compile/index.html',
-    //   inject: 'head',
-    //   hash: true
-    // })
-  ],
-  module: defaultSettings.getDefaultModules()
-});
-
-// Add needed loaders to the defaults here
-config.module.loaders.push({
-  test: /\.(js|jsx)$/,
-  loader: 'react-hot!babel-loader',
-  include: [].concat(
-    config.additionalPaths, [path.join(__dirname, '/../src')]
-  )
-});
-
-module.exports = config;
+    new webpack.BannerPlugin('版权所有，翻版必究'),
+    new HtmlWebpackPlugin({
+      title: 'My App',
+      inject: 'head',
+      hash: true,
+      filename: path.join(publicPath, '/assets/index.html'),
+      template: "./src/templete.html"
+    }),
+    new webpack.HotModuleReplacementPlugin() //热加载插件
+  ]
+}
