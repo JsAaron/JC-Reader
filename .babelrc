@@ -1,14 +1,12 @@
+
 {
-  "presets": ["react", "env"],
-  "env": {
-    "development": {
-    "plugins": [["react-transform", {
-       "transforms": [{
-         "transform": "react-transform-hmr",
-         "imports": ["react"],
-         "locals": ["module"]
-       }]
-     }]]
-    }
-  }
+  "presets": [
+    "es2015",
+    "stage-0",
+    "react"
+  ],
+  "plugins": [
+    ["import", { "libraryName": "antd", "style": true }],
+    "transform-es2015-typeof-symbol",
+  ]
 }
