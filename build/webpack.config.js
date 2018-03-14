@@ -9,17 +9,19 @@ const baseSettings = require('./base.config')
 const moment = require('moment');
 const path = require('path');
 
+const ASSET_PATH = process.env.ASSET_PATH || '/';
+
 module.exports = {
-    devtool: 'eval-source-map',
+    devtool: "inline-source-map",
     entry: path.join(baseSettings.srcPath, '/main.js'), //已多次提及的唯一入口文件
     output: {
         path: baseSettings.outPath, //打包后的文件存放的地方
         filename: "bundle.js", //打包后输出文件的文件名
-        publicPath: baseSettings.publicPath
+        publicPath: ASSET_PATH
     },
     devServer: {
         port: 8080,
-        publicPath:baseSettings.publicPath,
+        publicPath: ASSET_PATH,
         contentBase: baseSettings.outPath, //本地服务器所加载的页面所在的目录
         historyApiFallback: true, // 在开发单页应用时非常有用，它依赖于HTML5 history API，如果设置为true，所有的跳转将指向index.html
         inline: true, //当源文件改变时会自动刷新页面
@@ -57,6 +59,10 @@ module.exports = {
         ]
     },
     plugins: [
+        //该插件帮助我们安心地使用环境变量
+        new webpack.DefinePlugin({
+            'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)
+        }),
         // new ExtractTextPlugin('styles.css'),
         // new webpack.BannerPlugin('版权所有，翻版必究'),
         new HtmlWebpackPlugin({
