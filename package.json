@@ -22,8 +22,8 @@
     "webpack-dev-server": "^2.9.7"
   },
   "scripts": {
-    "start": "webpack",
-    "server": "webpack-dev-server --open",
+    "start": "node ./build/dev.config.js",
+    "server": "webpack-dev-server",
     "build": "NODE_ENV=production webpack --config ./webpack.production.config.js --progress",
     "buildWin": "set NODE_ENV=production && webpack --config ./webpack.production.config.js --progress"
   },
