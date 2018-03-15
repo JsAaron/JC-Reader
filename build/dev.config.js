@@ -12,12 +12,13 @@ let config = Object.assign({}, baseConfig, {
         new HtmlWebpackPlugin({
             template: __dirname + "/../src/template.html" //new 一个这个插件的实例，并传入相关的参数
         }),
+        new webpack.NoEmitOnErrorsPlugin(),//出错时只打印错误，但不重新加载页面
         new webpack.HotModuleReplacementPlugin(),
         new CleanWebpackPlugin('dist/*.*', {
             root: __dirname,
             verbose: true,
             dry: false
-        }) //热加载插件
+        })
     ],
     module: defaultConfig.getDefaultModules(),
 
