@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "webpack",
-    "dev": "webpack-dev-server --config ./build/dev.js",
+    "dev": "webpack-dev-server --config ./build/dev.config.js",
     "build": "NODE_ENV=production webpack --config ./webpack.production.config.js --progress",
     "buildWin": "set NODE_ENV=production && webpack --config ./webpack.production.config.js --progress"
   },
