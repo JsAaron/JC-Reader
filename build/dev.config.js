@@ -17,7 +17,10 @@ let config = Object.assign({}, baseConfig, {
     new ExtractTextPlugin("styles.css"),
     new webpack.BannerPlugin('版权所有，翻版必究'),
     new HtmlWebpackPlugin({
-      template: __dirname + "/../src/template.html" //new 一个这个插件的实例，并传入相关的参数
+      template: __dirname + "/../src/template.html",
+      filename: __dirname + "/../dist/index.html",
+      inject:'body',
+      hash:true
     }),
     new webpack.NoEmitOnErrorsPlugin(), //出错时只打印错误，但不重新加载页面
     new webpack.HotModuleReplacementPlugin(),
