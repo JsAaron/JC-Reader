@@ -1,6 +1,8 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 const defaultConfig = require('./default')
 const baseConfig = require('./base')
 
@@ -12,6 +14,7 @@ let config = Object.assign({}, baseConfig, {
   ],
   devtool: 'eval-source-map',
   plugins: [
+    new ExtractTextPlugin("styles.css"),
     new webpack.BannerPlugin('版权所有，翻版必究'),
     new HtmlWebpackPlugin({
       template: __dirname + "/../src/template.html" //new 一个这个插件的实例，并传入相关的参数

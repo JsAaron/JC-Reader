@@ -1,13 +1,11 @@
 import React from 'react';
-import { render } from 'react-dom';
+import {render} from 'react-dom';
+import Greeter from './Greeter';
+import {AppContainer} from 'react-hot-loader'
 
+import './main.css'; //使用require导入css文件
 
-class App extends React.Component {
- render(){ // Every react component has a render method.
-   return( // Every render method returns jsx. Jsx looks like HTML, but it's actually javascript and functions a lot like xml, with self closing tags requiring the `/` within the tag in order to work propperly
-     <div>
-       Hello World
-     </div>
-   );
- }
-}
+render(
+  <AppContainer>
+  <Greeter/>
+</AppContainer>, document.getElementById('root'));

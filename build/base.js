@@ -11,7 +11,8 @@ module.exports = {
     contentBase: "/../dist", //本地服务器所加载的页面所在的目录
     historyApiFallback: true, //不跳转
     inline: true,
-    hot: true
+    hot: true,
+    noInfo: true
     // progress:true
   }
 };
