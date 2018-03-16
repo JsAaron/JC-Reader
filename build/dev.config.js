@@ -10,7 +10,7 @@ let config = Object.assign({}, baseConfig, {
   entry: [
     'webpack-dev-server/client?http://127.0.0.1:' + defaultConfig.port,
     'react-hot-loader/patch',
-    './src/index'
+    './src/index.jsx'
   ],
   devtool: 'eval-source-map',
   plugins: [
