@@ -12,7 +12,7 @@ let config = Object.assign({}, baseConfig, {
     'react-hot-loader/patch',
     './src/index.jsx'
   ],
-  devtool: 'eval-source-map',
+  devtool: 'cheap-module-eval-source-map',
   plugins: [
     new ExtractTextPlugin("styles.css"),
     new webpack.BannerPlugin('版权所有，翻版必究'),
