@@ -1,11 +1,10 @@
 import React from 'react';
 import {
-  BrowserRouter,
+  BrowserRouter as Router,
   Route,
   Switch
 } from 'react-router-dom';
 
-// import index from '../components/Main';
 const Home = () => (
   <div>
     <h2>首页</h2>
@@ -13,11 +12,11 @@ const Home = () => (
 )
 
 const RouteConfig = () => (
-  <BrowserRouter>
+  <Router>
     <Switch>
       <Route path="/" exact component={Home} />
     </Switch>
-  </BrowserRouter>
+  </Router>
 )
 
 export default RouteConfig

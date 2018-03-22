@@ -1,12 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import { Provider } from 'react-redux'; //redux的store到react
-import store from './redux/store/store';
+import store from './redux/store/index';
+import Route from './router/index';
 
-
-ReactDOM(
+render(
   <Provider store={store}>
-    <div>123<div>
+    <Route />
   </Provider>,
   document.getElementById('app')
 )

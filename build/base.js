@@ -14,5 +14,9 @@ module.exports = {
     hot: true,
     noInfo: true
     // progress:true
-  }
+  },
+  resolve: {
+    extensions: ['.js', '.jsx','.json'] //默认添加后缀
+  },
+  module: {}
 };
