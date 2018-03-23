@@ -17,13 +17,17 @@ function getDefaultModules() {
         exclude: /node_modules/
       },
       {
+        test: /\.less$/,
+        loader: 'style-loader!css-loader!less-loader'
+      },
+      {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: {
             loader: "css-loader",
             options: {
-              modules: true
+              // modules: true  加载antd样式冲突，去掉
             }
           }
         })
