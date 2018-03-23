@@ -16,7 +16,7 @@ module.exports = {
     // progress:true
   },
   resolve: {
-    extensions: ['.js', '.jsx','.json'] //默认添加后缀
+    extensions: ['.js', '.jsx'] //默认添加后缀
   },
   module: {}
 };

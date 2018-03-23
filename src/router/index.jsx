@@ -5,16 +5,12 @@ import {
   Switch
 } from 'react-router-dom';
 
-const Home = () => (
-  <div>
-    <h2>首页</h2>
-  </div>
-)
+import Home from '../components/home';
 
 const RouteConfig = () => (
   <Router>
     <Switch>
-      <Route path="/" exact component={Home} />
+      <Route path="/" component={Home} />
     </Switch>
   </Router>
 )

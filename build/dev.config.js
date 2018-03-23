@@ -19,8 +19,8 @@ let config = Object.assign({}, baseConfig, {
     new HtmlWebpackPlugin({
       template: __dirname + "/../src/template.html",
       filename: __dirname + "/../dist/index.html",
-      inject:'body',
-      hash:true
+      inject: 'body',
+      hash: true
     }),
     new webpack.NoEmitOnErrorsPlugin(), //出错时只打印错误，但不重新加载页面
     new webpack.HotModuleReplacementPlugin(),
@@ -28,6 +28,9 @@ let config = Object.assign({}, baseConfig, {
       root: __dirname,
       verbose: true,
       dry: false
+    }),
+    new webpack.ProvidePlugin({
+      "React": "react",
     })
   ],
   module: defaultConfig.getDefaultModules(),
