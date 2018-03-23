@@ -12,7 +12,14 @@ module.exports = {
     historyApiFallback: true, //不跳转
     inline: true,
     hot: true,
-    noInfo: true
+    noInfo: true,
+    proxy: {
+      '/api': {
+        target: 'http://api.zhuishushenqi.com/',
+        pathRewrite: { '^/api': '/' },
+        changeOrigin: true
+      }
+    }
     // progress:true
   },
   resolve: {

@@ -1,15 +1,18 @@
-//搜索书籍
-export const fetchBookList = (state = {}, action) => {
-  return state
-}
-
-//书籍详情
-export const fetchBookItem = (state = {}, action) => {
-  return state
-}
-
-
-//默认书单列表
-export const bookList = (state = {}, action) => {
-  return state
+/**
+ * 搜索书籍
+ * @param  {Object} state  [description]
+ * @param  {Object} action [description]
+ * @return {[type]}        [description]
+ */
+export const fetchBookList = (state = { books: [], name: '' }, action = {}) => {
+    switch (action.type) {
+      case 'GET_BOOKLIST':
+        const {
+          data: { books },
+          name
+        } = action
+        return { books, name };
+      default:
+        return state;
+    }
 }
