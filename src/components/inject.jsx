@@ -9,14 +9,10 @@ import * as action from '../redux/action/index'
 const Inject = (component) => {
   const mapStateToProps = (state) => {
     let {
-      fetchBookList,
-      fetchBookItem,
-      bookList
+      fetchBookList
     } = state
     return {
-      fetchBookList,
-      fetchBookItem,
-      bookList
+      fetchBookList
     }
   }
 
