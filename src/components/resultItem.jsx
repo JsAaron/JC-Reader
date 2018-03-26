@@ -1,22 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styles from '../styles/resultBookItem.less';
+import { Link } from 'react-router-dom';
 
-const ResultBookItem = function(props) {
+let errorLoading = require('../images/error.jpg')
 
-  function handleImageErrored(){
-    console.log(123)
+class ResultBookItem extends React.Component{
+
+  handleImageErrored(e){
+    e.target.src = errorLoading;
   }
 
-  return (
-    <div className={styles.box}>
-      <img src={props.data.cover} onError={handleImageErrored}/>
-      <p>
-        <span>{props.data.title}</span><br/>
-        <span>{props.data.latelyFollower}人在追 | {props.data.retentionRatio}%读者留存 | {props.data.author}著</span>
-      </p>
-    </div>
-  )
+  render() {
+    return (
+      <Link to={`/bookIntroduce/${this.props.data._id}`}>
+      <div className={styles.box}>
+        <img src={errorLoading} onError={this.handleImageErrored}/>
+        <p>
+          <span>{this.props.data.title}</span><br/>
+          <span>{this.props.data.latelyFollower}人在追 | {this.props.data.retentionRatio}%读者留存 | {this.props.data.author}著</span>
+        </p>
+      </div>
+      </Link>
+    )
+  }
 }
 
-export default ResultBookItem
+export default ResultBookItem;

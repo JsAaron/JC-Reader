@@ -31,6 +31,16 @@ function getDefaultModules() {
             }
           }
         })
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            //（单位 byte）低于指定的限制时，可以返回一个 DataURL
+            limit: 8192
+          }
+        }]
       }
     ]
   }

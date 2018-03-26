@@ -76,7 +76,7 @@ class Search extends React.Component {
                     renderItem={item => (
                       <List.Item>
                         <List.Item.Meta
-                          avatar={<Avatar shape="circle" size="small" icon="user" style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}/>}
+                          avatar={<Avatar shape="circle"  icon="user" style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}/>}
                           title={<a href="https://ant.design">{item}</a>}
                         />
                         <Icon type="close" />
@@ -91,7 +91,7 @@ class Search extends React.Component {
               this.props.fetchBookList.books.map((item, index) => {
                 return <ResultItems data={item} key={index}/>
               })
-              : (<div>没有找到搜索结果</div>)
+              : (<div className={styles.noResult}>没有找到搜索结果</div>)
             )
 
 
