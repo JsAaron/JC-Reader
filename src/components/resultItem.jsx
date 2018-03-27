@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 
 let errorLoading = require('../images/error.jpg')
 
-class ResultBookItem extends React.Component{
+class ResultBookItem extends React.Component {
 
-  handleImageErrored(e){
+  handleImageErrored(e) {
     e.target.src = errorLoading;
   }
 
   render() {
     return (
-      <Link to={`/bookIntroduce/${this.props.data._id}`}>
+      <Link to={`/detail/${this.props.data._id}`}>
       <div className={styles.box}>
         <img src={errorLoading} onError={this.handleImageErrored}/>
         <p>

@@ -16,7 +16,7 @@ class Home extends React.Component {
       <div className="page" ref="main">
         <Layout>
           <Header className={styles.header}>
-            <Link to="/profile"><Icon type="profile" className={styles.profile} /></Link>
+            <Link to="/profile" className="styles.back"><Icon type="profile" className={styles.profile} /></Link>
             <span className={styles.title}>JC追书神器</span>
             <Link to="/search"><Icon type="search" className={styles.search} /></Link>
           </Header>
