@@ -1,0 +1,72 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Layout, Button, Icon, message } from 'antd'
+import styles from '../styles/detail.less'
+import Connect from './connect';
+
+const { Header, Footer, Content } = Layout;
+const ButtonGroup = Button.Group;
+
+class BookDetail extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.data = {};
+    message.config({
+      top: 500,
+      duration: 2,
+    });
+    this.addBook = this.addBook.bind(this)
+    this.beiginRead = this.beiginRead.bind(this)
+    this.props.getBookDetail('50865988d7a545903b000009');
+  }
+
+  /**
+   * 追加更新
+   */
+  addBook() {
+    this.props.addBook(this.data);
+    message.info(`《${this.data.title}》加入书架`);
+  }
+
+  /**
+   * 开始阅读
+   * @return {[type]} [description]
+   */
+  beiginRead(){
+    console.log(this)
+  }
+
+  render() {
+    return (
+      <div>
+        <Layout>
+          <Header className={styles.header}>
+            <Link to="/search"><Icon type="left"/>返回</Link>
+            <span>书籍详情</span>
+          </Header>
+          <Content>
+            <div className={styles.introduce}>
+              <div></div>
+              <div></div>
+            </div>
+            <div>介绍</div>
+          </Content>
+          <Footer className={styles.footer}>
+            <ButtonGroup className={styles.footerGroup}>
+              <Button type="primary" onClick={this.addBook}>
+                <Icon type="plus" />追更新
+              </Button>
+              <Button type="primary" onClick={this.beiginRead}>
+                开始阅读
+              </Button>
+            </ButtonGroup>
+          </Footer>
+        </Layout>
+      </div>
+    )
+  }
+}
+
+
+export default Connect(BookDetail)

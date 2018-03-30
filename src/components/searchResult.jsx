@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 let errorLoading = require('../images/error.jpg')
 
-class ResultBookItem extends React.Component {
+class SearchResult extends React.Component {
 
   handleImageErrored(e) {
     e.target.src = errorLoading;
@@ -25,4 +25,4 @@ class ResultBookItem extends React.Component {
   }
 }
 
-export default ResultBookItem;
+export default SearchResult;

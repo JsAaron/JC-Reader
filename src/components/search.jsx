@@ -3,8 +3,8 @@ import { Layout, Icon, Input, Spin, Tag, List, Avatar, AutoComplete } from 'antd
 import { Link } from 'react-router-dom';
 import styles from '../styles/search.less';
 import randomcolor from 'randomcolor';
-import ResultItems from './resultItem'
-import Inject from './inject';
+import SearchResult from './searchResult'
+import Connect from './connect';
 
 const { Header, Content } = Layout
 
@@ -89,7 +89,7 @@ class Search extends React.Component {
             (
               this.props.fetchBookList.books.length !== 0 ?
               this.props.fetchBookList.books.map((item, index) => {
-                return <ResultItems data={item} key={index}/>
+                return <SearchResult data={item} key={index}/>
               })
               : (<div className={styles.noResult}>没有找到搜索结果</div>)
             )
@@ -104,4 +104,4 @@ class Search extends React.Component {
   }
 }
 
-export default Inject(Search)
+export default Connect(Search)

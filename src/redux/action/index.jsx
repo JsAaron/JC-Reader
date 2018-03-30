@@ -23,6 +23,44 @@ export const receiveBookList = (data, name) => {
   }
 }
 
+
+/**
+ * 为书籍请求章节列表 - 书源信息
+ * @param  {[type]} data [description]
+ * @return {[type]}      [description]
+ */
+export const addBook = (data) => {
+  let dataIntroduce = data;
+  return dispatch => {
+    console.log(data)
+  }
+}
+
+/**
+ * 获取书籍详情
+ * 通过id查询后返回结果集
+ * @return {[type]} [description]
+ */
+export const getBookDetail = (id) => {
+  return dispatch => {
+    fetch(`/api/book/${id}`)
+      .then(function(res) {
+        return res.json()
+      })
+      .then(data => {
+        data.cover = url2Real(data.cover);
+        data.wordCount = wordCount2Str(data.wordCount);
+        data.updated = time2Str(data.updated);
+        return data;
+      })
+      .then(data => dispatch(receiveBookList(data)))
+      .catch(error => {
+        console.log(error);
+      })
+  }
+}
+
+
 /**
  * 通过搜索获取书列表
  * @param  {[type]} name [description]

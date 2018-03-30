@@ -7,14 +7,14 @@ import {
 
 import Home from '../components/home';
 import Search from '../components/search';
-import Detail from '../components/detail';
+import BookDetail from '../components/bookDetail';
 
 const RouteConfig = () => (
   <Router>
     <Switch>
-      <Route path="/" exact component={Detail} />
+      <Route path="/" exact component={BookDetail} />
       <Route path="/search" exact component={Search} />
-      <Route path="/detail/:id" exact component={Detail} />
+      <Route path="/bookDetail/:id" exact component={BookDetail} />
     </Switch>
   </Router>
 )
