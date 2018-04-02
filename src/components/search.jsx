@@ -3,7 +3,7 @@ import { Layout, Icon, Input, Spin, Tag, List, Avatar, AutoComplete } from 'antd
 import { Link } from 'react-router-dom';
 import styles from '../styles/search.less';
 import randomcolor from 'randomcolor';
-import SearchResult from './searchResult'
+import SearchResult from './search-result'
 import Connect from './connect';
 
 const { Header, Content } = Layout

@@ -7,7 +7,7 @@ import {
 
 import Home from '../components/home';
 import Search from '../components/search';
-import BookDetail from '../components/bookDetail';
+import BookDetail from '../components/book-detail';
 
 const RouteConfig = () => (
   <Router>

@@ -16,6 +16,7 @@ class BookDetail extends React.Component {
       top: 500,
       duration: 2,
     });
+    this.flag = false; //是否进入阅读模式
     this.addBook = this.addBook.bind(this)
     this.beiginRead = this.beiginRead.bind(this)
     this.props.getBookDetail('50865988d7a545903b000009');
@@ -29,12 +30,19 @@ class BookDetail extends React.Component {
     message.info(`《${this.data.title}》加入书架`);
   }
 
+
   /**
    * 开始阅读
    * @return {[type]} [description]
    */
-  beiginRead(){
-    console.log(this)
+  beiginRead() {
+    this.addBook();
+    this.flag = true;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps)
+    // this.data = nextProps.fetchBookItem;
   }
 
   render() {

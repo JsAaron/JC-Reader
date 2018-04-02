@@ -23,19 +23,6 @@ export const receiveBookList = (data, name) => {
   }
 }
 
-
-/**
- * 为书籍请求章节列表 - 书源信息
- * @param  {[type]} data [description]
- * @return {[type]}      [description]
- */
-export const addBook = (data) => {
-  let dataIntroduce = data;
-  return dispatch => {
-    console.log(data)
-  }
-}
-
 /**
  * 获取书籍详情
  * 通过id查询后返回结果集
@@ -60,7 +47,6 @@ export const getBookDetail = (id) => {
   }
 }
 
-
 /**
  * 通过搜索获取书列表
  * @param  {[type]} name [description]
@@ -82,3 +68,25 @@ export const getBookList = (name) => {
       })
   }
 }
+
+/**
+ * 追加书，到封面列表
+ * @param  {[type]} data [description]
+ * @return {[type]}      [description]
+ */
+export const addBook = (data) => {
+  let dataIntroduce = data;
+  return dispatch =>{
+    console.log(data._id)
+    fetch(`/api/toc?view=summary&book=${data._id}`)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+}
+
+
