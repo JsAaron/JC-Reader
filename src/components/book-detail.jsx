@@ -11,21 +11,21 @@ class BookDetail extends React.Component {
 
   constructor(props) {
     super(props)
+    console.log(props)
     this.data = {};
     message.config({
       top: 500,
       duration: 2,
     });
     this.flag = false; //是否进入阅读模式
-    this.addBook = this.addBook.bind(this)
-    this.beiginRead = this.beiginRead.bind(this)
-    this.props.getBookDetail('50865988d7a545903b000009');
+    //路由传递的url:id
+    this.props.getBookDetail(this.props.match.params.id);
   }
 
   /**
    * 追加更新
    */
-  addBook() {
+  addBook = () => {
     this.props.addBook(this.data);
     message.info(`《${this.data.title}》加入书架`);
   }
@@ -35,13 +35,13 @@ class BookDetail extends React.Component {
    * 开始阅读
    * @return {[type]} [description]
    */
-  beiginRead() {
+  beiginRead = () => {
     this.addBook();
     this.flag = true;
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps)
+    // console.log(nextProps)
     // this.data = nextProps.fetchBookItem;
   }
 

@@ -8,6 +8,7 @@ import Connect from './connect';
 
 const { Header, Content } = Layout
 
+
 function onSelect(value) {
   console.log('onSelect', value);
 }
@@ -18,27 +19,45 @@ class Search extends React.Component {
     super(props)
     this.state = {
       loading: false, //搜索状态
-      searchValue: this.props.fetchBookList.name, //搜索关键字
+      searchValue: '', //搜索关键字
       bookList: this.props.fetchBookList.books, //书籍列表
       dataSource: [],
       searchHot: ['斗罗大陆', '完美世界', '斗破苍穹', '绝世武神', '永夜君王', '武动乾坤', '凡人修仙传', '天龙八部', '龙王传说', '大主宰'],
       searchHistory: ['斗罗大陆', '完美世界', '斗破苍穹']
     }
+    //判断是否是搜索状态
     this.flag = this.state.searchValue.length ? false : true;
+    //随机标签字体颜色
     this.tagColorArr = this.state.searchHot.map(item => randomcolor({ luminosity: 'dark' }))
-
-    this.handleSearch = this.handleSearch.bind(this);
   }
 
-  handleSearch(value) {
+  /**
+   * 通过单词搜索
+   * @param  {[type]} e [description]
+   * @return {[type]}   [description]
+   */
+  wordSearch = (e) => {
+    let word = e.target.textContent;
+    //设置搜索关键字
+    // this.setState({ searchValue: word });
+    this.searchBook(word)
+  }
+
+  /**
+   * 自动搜索书籍
+   * @param  {[type]} value [description]
+   * @return {[type]}       [description]
+   */
+  searchBook = (value) => {
     this.flag = false;
     this.props.getBookList(value);
   }
 
-  componentWillReceiveProps(newProps) {
+  componentWillReceiveProps(nextProps) {
     this.setState({
-      bookList: newProps.fetchBookList.books
-    })
+      bookList: nextProps.fetchBookList.books,
+      searchValue: nextProps.fetchBookList.name
+    });
   }
 
   render() {
@@ -51,8 +70,9 @@ class Search extends React.Component {
               dataSource={dataSource}
               style={{ width: 330 }}
               onSelect={onSelect}
-              onSearch={this.handleSearch}
-              placeholder="请输入书名或者作者名"
+              placeholder = "请输入书名或者作者名"
+              value = {this.state.searchValue}
+              onSearch={this.searchBook}
             />
             <Link to="/" className={styles.cancel}>取消</Link>
           </Header>
@@ -65,7 +85,7 @@ class Search extends React.Component {
               <div className={styles.tags}>
                  {
                     this.state.searchHot.map((item, index) =>
-                      <Tag className={styles.tag} color={this.tagColorArr[index]} key={index}>{item}</Tag>
+                      <Tag className={styles.tag} color={this.tagColorArr[index]} onClick={this.wordSearch} key={index}>{item}</Tag>
                     )
                   }
               </div>

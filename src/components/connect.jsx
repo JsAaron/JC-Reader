@@ -1,4 +1,4 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import * as action from '../redux/action/index'
 
 /**
@@ -6,7 +6,7 @@ import * as action from '../redux/action/index'
  * @param  {[type]} component [description]
  * @return {[type]}           [description]
  */
-const Inject = (component) => {
+const Connect = (component) => {
   const mapStateToProps = (state) => {
     let {
       fetchBookList
@@ -19,7 +19,7 @@ const Inject = (component) => {
   return connect(
     mapStateToProps,
     action
-    )(component)
+  )(component)
 }
 
-export default Inject;
+export default Connect;

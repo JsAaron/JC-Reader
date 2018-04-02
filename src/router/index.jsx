@@ -12,9 +12,9 @@ import BookDetail from '../components/book-detail';
 const RouteConfig = () => (
   <Router>
     <Switch>
-      <Route path="/" exact component={BookDetail} />
+      <Route path="/" exact component={Search} />
       <Route path="/search" exact component={Search} />
-      <Route path="/bookDetail/:id" exact component={BookDetail} />
+      <Route path="/detail/:id" exact component={BookDetail} />
     </Switch>
   </Router>
 )
