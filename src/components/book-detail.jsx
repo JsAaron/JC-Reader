@@ -41,7 +41,7 @@ class BookDetail extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log(nextProps)
+    console.log(nextProps)
     // this.data = nextProps.fetchBookItem;
   }
 
