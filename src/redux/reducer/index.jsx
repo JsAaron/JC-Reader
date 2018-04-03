@@ -4,7 +4,7 @@
  * @param  {Object} action [description]
  * @return {[type]}        [description]
  */
-export const fetchBookList = (state = { books: [], name: '' }, action = {}) => {
+export const fetchBookItem = (state = { books: [], name: '' }, action = {}) => {
     switch (action.type) {
       case 'GET_BOOKLIST':
         const {

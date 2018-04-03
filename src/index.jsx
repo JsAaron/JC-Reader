@@ -5,6 +5,8 @@ import { Provider } from 'react-redux'; //redux的store到react
 import store from './redux/store/index';
 import Route from './router/index';
 
+// import Route from './test'
+
 import 'normalize.css';
 
 const app = document.getElementById('app')

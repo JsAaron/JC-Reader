@@ -20,7 +20,7 @@ class Search extends React.Component {
     this.state = {
       loading: false, //搜索状态
       searchValue: '', //搜索关键字
-      bookList: this.props.fetchBookList.books, //书籍列表
+      bookList: this.props.fetchBookItem.books, //书籍列表
       dataSource: [],
       searchHot: ['斗罗大陆', '完美世界', '斗破苍穹', '绝世武神', '永夜君王', '武动乾坤', '凡人修仙传', '天龙八部', '龙王传说', '大主宰'],
       searchHistory: ['斗罗大陆', '完美世界', '斗破苍穹']
@@ -55,8 +55,8 @@ class Search extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      bookList: nextProps.fetchBookList.books,
-      searchValue: nextProps.fetchBookList.name
+      bookList: nextProps.fetchBookItem.books,
+      searchValue: nextProps.fetchBookItem.name
     });
   }
 
@@ -107,8 +107,8 @@ class Search extends React.Component {
               )
              :
             (
-              this.props.fetchBookList.books.length !== 0 ?
-              this.props.fetchBookList.books.map((item, index) => {
+              this.props.fetchBookItem.books.length !== 0 ?
+              this.props.fetchBookItem.books.map((item, index) => {
                 return <SearchResult data={item} key={index}/>
               })
               : (<div className={styles.noResult}>没有找到搜索结果</div>)

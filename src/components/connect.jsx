@@ -9,10 +9,10 @@ import * as action from '../redux/action/index'
 const Connect = (component) => {
   const mapStateToProps = (state) => {
     let {
-      fetchBookList
+      fetchBookItem
     } = state
     return {
-      fetchBookList
+      fetchBookItem
     }
   }
 

@@ -7,16 +7,16 @@ import Connect from './connect';
 const { Header, Footer, Content } = Layout;
 const ButtonGroup = Button.Group;
 
+message.config({
+  top: 500,
+  duration: 2,
+});
+
 class BookDetail extends React.Component {
 
   constructor(props) {
     super(props)
-    console.log(props)
     this.data = {};
-    message.config({
-      top: 500,
-      duration: 2,
-    });
     this.flag = false; //是否进入阅读模式
     //路由传递的url:id
     this.props.getBookDetail(this.props.match.params.id);

@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Link,
   BrowserRouter as Router,
   Route,
   Switch,
@@ -13,10 +14,10 @@ import BookDetail from '../components/book-detail';
 const RouteConfig = () => (
   <Router>
     <Switch>
-
       <Route path="/" exact component={Search} />
       <Route path="/search" exact component={Search} />
       <Route path="/detail/:id" exact component={BookDetail} />
+      <Route component={Search} />
     </Switch>
   </Router>
 )
