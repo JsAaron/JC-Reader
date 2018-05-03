@@ -40,6 +40,10 @@ class BookDetail extends React.Component {
     this.flag = true;
   }
 
+  /**
+   * 
+   * 在已经挂在的组件(mounted component)接收到新props时触发
+   */
   componentWillReceiveProps(nextProps) {
     console.log(nextProps)
     // this.data = nextProps.fetchBookItem;
